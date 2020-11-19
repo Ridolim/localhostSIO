@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Jeu du plus ou moins</title>
+<style>
+  html {
+    font-family: sans-serif;
+  }
+  body {
+    width: 50%;
+    max-width: 800px;
+    min-width: 480px;
+    margin: 0 auto;
+  }
+ 
+  .lastResult {
+    color: white;
+    padding: 3px;
+  }
+</style>
+</head>
+ 
+<body>
+<h1>Jeu du plus ou moins</h1>
+ 
+<p>On a choisi un nombre entre 1 et 100. Voyons si tu peux le deviner en 10 tentatives ou moins. Nous te dirons si c'est plus ou si c'est moins.</p>
+ 
+<form id="frmGame" >
+  <label for="guessField">Test un nombre: </label>
+  <input type="text" id="guessField" />
+  <input type="button" value="Submit guess" id="guessSubmit" />
+</form>
+ 
+<div class="resultParas">
+  <p class="guesses"></p>
+  <p class="lastResult"></p>
+  <p class="lowOrHi"></p>
+</div>
+ 
+<script>
+  let randomNumber = Math.floor(Math.random() * 100) + 1;
+ 
+  let guesses = document.querySelector('.guesses');
+  let lastResult = document.querySelector('.lastResult');
+  let lowOrHi = document.querySelector('.lowOrHi');
+
+  let guessSubmit = document.querySelector('#guessSubmit');
+  let guessField = document.querySelector('#guessField');
+
+  let guessCount = 1;
+  let resetButton;
+  allGuesses = '';
+
+  function checkGuess() {
+    let userGuess = Number(guessField.value);
+    allGuesses = userGuess + ' ' + allGuesses;
+    guesses.textContent = 'Propositions précédentes : ' + allGuesses;
+    
+    if (userGuess === randomNumber) {
+      lastResult.textContent = 'Bravo, vous avez trouvé le nombre !';
+      lastResult.style.backgroundColor = 'green';
+      lowOrHi.textContent = '';
+      setGameOver();
+    } else if (guessCount === 10) {
+      lastResult.textContent = '!!! PERDU !!!';
+      setGameOver();
+    } else {
+      lastResult.textContent = 'Faux !';
+      lastResult.style.backgroundColor = 'red';
+      if (userGuess < randomNumber) {
+        lowOrHi.textContent = 'Le nombre saisi est trop petit !';
+      } else if (userGuess > randomNumber) {
+        lowOrHi.textContent = 'Le nombre saisi est trop grand !';
+      }
+    }
+    guessCount++;
+    guessField.value = '';
+    guessField.focus();
+  }
+  guessSubmit.addEventListener('click', checkGuess);
+  function setGameOver() {
+    resetButton = document.createElement('button');
+    resetButton.textContent = 'Start new game';
+    document.body.appendChild(resetButton);
+    resetButton.addEventListener('click', resetGame);
+  }
+
+
+</script>
+</body>
+</html> 
