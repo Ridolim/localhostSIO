@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Projets - Affichage, sélection, actions</title>
+		<meta charset="utf-8" />
+		<style type="text/css">
+		    body{ font-family : Arial ; font-size : 12pt; }
+        	ul#btns li {display : inline-block ; margin-right : 1em}
+			table#tbProjects {border: 0.2em black solid; margin-top:0.5em; width:50%}
+            th, td { text-align: center;}
+            table caption { margin-top:0.5em; margin-bottom:0.5em; font-size:1.5em; font-weight:bold;}
+		</style>
+	</head>
+	<body>
+		<div>
+            <table id="tbProjects">
+                <caption>Liste des projets</caption>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Nom</th>
+                    <th>Date de création</th>
+                    <th>Niveau de visibilité</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr id="ligneACopier">
+                    <td><input type="checkbox" id="chkProject1" /></td>
+                    <td>PPE32_Gitlab_Admin</td>
+                    <td>2020-11-17</td>
+                    <td>private</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chkProject2" /></td>
+                    <td>TestDepotGit</td>
+                    <td>2020-10-15</td>
+                    <td>public</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chkProject3" /></td>
+                    <td>RevisionPDO</td>
+                    <td>2020-11-02</td>
+                    <td>internal</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chkProject4" /></td>
+                    <td>API-Rest-Salles</td>
+                    <td>2020-10-07</td>
+                    <td>private</td>
+                </tr>
+            </tbody>
+            </table>
+			<ul id="btns">
+        		<li><button id="btnToutCocher">Tout cocher</button></li>
+				<li><button id="btnToutDecocher">Tout décocher</button></li>
+            </ul>
+		</div>
+    </body>
+    <script>
+        // déclaration des variables globales au script
+        let data, projects; // en vue de mémoriser chaîne JSON et tableau JSON
+
+        // définition des différentes écouteurs
+        function initGestionEcouteurs() {
+
+        }
+        // crée l'écouteur d'événement du chargement de la page
+        // pour procéder aux différentes initialisations dont la pause des différents écouteurs
+        window.addEventListener("load", function () {
+            initGestionEcouteurs(); 
+        });
+    </script>
+</html>

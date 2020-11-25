@@ -1,0 +1,57 @@
+[ {
+    "id": 200,
+    "name": "PPE32_Gitlab_Admin ",
+    "name_with_namespace": "rmarin / PPE32_Gitlab_Admin ",
+    "created_at": "2020-11-17T15:22:10.532Z",
+    "web_url": "https://sio.lycee-basch.fr/gitlab/rmarin/ppe32_gitlab_admin",
+    "visibility": "private",
+    "owner": {
+      "id": 110,
+      "name": "rmarin",
+      "username": "rmarin",
+      "state": "active"
+    }
+ },
+ {
+    "id": 210,
+    "name": "TestDepotGit",
+    "name_with_namespace": "bmorin / TestDepotGit",
+    "created_at": "2020-10-15T10:50:10.532Z",
+    "web_url": "https://sio.lycee-basch.fr/gitlab/bmorin/testdepotgit",
+    "visibility": "public",
+    "owner": {
+      "id": 112,
+      "name": "bmorin",
+      "username": "bmorin",
+      "state": "active"
+    }
+ },
+ {
+    "id": 220,
+    "name": "RevisionPDO",
+    "name_with_namespace": "gsamson / RevisionPDO",
+    "created_at": "2020-11-02T14:40:25.532Z",
+    "web_url": "https://sio.lycee-basch.fr/gitlab/gsamson/revisionpdo",
+    "visibility": "internal",
+    "owner": {
+      "id": 115,
+      "name": "gsamson",
+      "username": "gsamson",
+      "state": "active"
+    }
+ },
+ {
+    "id": 190,
+    "name": "API-Rest-Salles",
+    "name_with_namespace": "gsamson / API-Rest-Salles",
+    "created_at": "2020-10-07T14:30:10.532Z",
+    "web_url": "https://sio.lycee-basch.fr/gitlab/gsamson/api-rest-salles",
+    "visibility": "internal",
+    "owner": {
+      "id": 115,
+      "name": "gsamson",
+      "username": "gsamson",
+      "state": "active"
+    }
+ }
+]
