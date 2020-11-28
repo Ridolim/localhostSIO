@@ -1,20 +1,20 @@
-let guessMaxSubmit = document.querySelector('#guessMaxSubmit');
-let guessMaxField = document.querySelector('#guessMaxField');
-let frmGuessMax = document.getElementById('frmGuessMax');
+let guessMaxSubmit = document.querySelector("#guessMaxSubmit");
+let guessMaxField = document.querySelector("#guessMaxField");
+let frmGuessMax = document.querySelector("#frmGuessMax");
 
-let guesses = document.querySelector('.guesses');
-let lastResult = document.querySelector('.lastResult');
-let lowOrHi = document.querySelector('.lowOrHi');
+let guesses = document.querySelector(".guesses");
+let lastResult = document.querySelector(".lastResult");
+let lowOrHi = document.querySelector(".lowOrHi");
 
-let labelGuess = document.querySelector('#frmGame label');
-let guessSubmit = document.querySelector('#guessSubmit');
-let guessField = document.querySelector('#guessField');
-let frmGame = document.getElementById('frmGame');
+let labelGuess = document.querySelector("#frmGame label");
+let guessSubmit = document.querySelector("#guessSubmit");
+let guessField = document.querySelector("#guessField");
+let frmGame = document.querySelector("#frmGame");
 
-let reset = document.querySelector('.reset')
+let reset = document.querySelector(".reset")
 
 let guessCount = 1;
-let allGuesses = '';
+let allGuesses = "";
 let resetButton;
 let randomNumber = 0;
 let userGuessMax = 0;
@@ -22,7 +22,7 @@ let gameResult = false;
 let nbWin = 0;
 let nbLose = 0;
 
-let score = document.querySelector('.userScore');
+let score = document.querySelector(".userScore");
 
 function prepGame(){
   userGuessMax = Number(guessMaxField.value);
@@ -30,27 +30,27 @@ function prepGame(){
     randomNumber = Math.floor(Math.random() * userGuessMax) + 1;
     frmGuessMax.style.display = "none";
     frmGame.style.display = "block";
-    labelGuess.textContent = 'Test un nombre entre 1 et ' + userGuessMax + ' :';
-    lastResult.textContent ='',
-    lastResult.style.backgroundColor = 'white';
+    labelGuess.textContent = "Test un nombre entre 1 et " + userGuessMax + " :";
+    lastResult.textContent ="",
+    lastResult.style.backgroundColor = "white";
     guessField.focus();
   }else{
-    lastResult.textContent = 'Choisi un nombre valide, entier, positif et non nul.';
-    lastResult.style.backgroundColor = 'red';
+    lastResult.textContent = "Choisi un nombre valide, entier, positif et non nul.";
+    lastResult.style.backgroundColor = "red";
     guessMaxField.focus();
   }
 }
-guessMaxSubmit.addEventListener('click', prepGame);
+guessMaxSubmit.addEventListener("click", prepGame);
 
 function checkGuess() {
   let userGuess = Number(guessField.value);
-  allGuesses = userGuess + ' ' + allGuesses;
-  guesses.textContent = 'Propositions précédentes : ' + allGuesses;
+  allGuesses = userGuess + " " + allGuesses;
+  guesses.textContent = "Propositions précédentes : " + allGuesses;
   
   if (userGuess === randomNumber) {
-    lastResult.textContent = 'Bravo, vous avez trouvé le nombre !';
-    lastResult.style.backgroundColor = 'green';
-    lowOrHi.textContent = '';
+    lastResult.textContent = "Bravo, vous avez trouvé le nombre !";
+    lastResult.style.backgroundColor = "green";
+    lowOrHi.textContent = "";
     allGuesses = "";
     gameResult = true;
     setGameOver();
@@ -60,21 +60,21 @@ function checkGuess() {
     gameResult = false;
     setGameOver();
   } else {
-    lastResult.textContent = 'Faux !';
-    lastResult.style.backgroundColor = 'red';
+    lastResult.textContent = "Faux !";
+    lastResult.style.backgroundColor = "red";
     if (userGuess < randomNumber) {
-      lowOrHi.textContent = 'Le nombre saisi est trop petit !';
-      lowOrHi.style.color = 'GoldenRod';
+      lowOrHi.textContent = "Le nombre saisi est trop petit !";
+      lowOrHi.style.color = "GoldenRod";
     } else if (userGuess > randomNumber) {
-      lowOrHi.textContent = 'Le nombre saisi est trop grand !';
-      lowOrHi.style.color = 'blue';
+      lowOrHi.textContent = "Le nombre saisi est trop grand !";
+      lowOrHi.style.color = "blue";
     }
   }
   guessCount++;
-  guessField.value = '';
+  guessField.value = "";
   guessField.focus();
 }
-guessSubmit.addEventListener('click', checkGuess);
+guessSubmit.addEventListener("click", checkGuess);
 
 function setGameOver() {
   if (gameResult === true){
@@ -86,27 +86,27 @@ function setGameOver() {
   
   guessField.disabled = true;
   guessSubmit.disabled = true;
-  resetButton = document.createElement('button');
-  resetButton.textContent = 'Start new game';
+  resetButton = document.createElement("button");
+  resetButton.textContent = "Start new game";
   document.body.appendChild(resetButton);
-  resetButton.addEventListener('click', resetGame);
+  resetButton.addEventListener("click", resetGame);
 }
 function resetGame() {
   guessCount = 1;
   
-  let resetParas = document.querySelectorAll('.resultParas p');
+  let resetParas = document.querySelectorAll(".resultParas p");
   for (let i = 0 ; i < resetParas.length ; i++) {
-    resetParas[i].textContent = '';
+    resetParas[i].textContent = "";
   }
   
   resetButton.parentNode.removeChild(resetButton);
   
   guessField.disabled = false;
   guessSubmit.disabled = false;
-  guessField.value = '';
+  guessField.value = "";
   frmGame.style.display = "none";
   frmGuessMax.style.display = "block";
-  guessMaxField.value = '';
+  guessMaxField.value = "";
   guessMaxField.focus();
-  lastResult.style.backgroundColor = 'white';
+  lastResult.style.backgroundColor = "white";
 }
